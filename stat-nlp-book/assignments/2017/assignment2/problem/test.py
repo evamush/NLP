@@ -187,12 +187,16 @@ def event_feat(event):
 
         for j in range(begin,end):
             for parent,label in parents[j]:
-                
+                if parent == trigger:
+                    result["Protein's parent is trigger:" + label] += 1.0
+                else:
                     result["Protein's parent is not a trigger:" + label] += 1.0
 
 
             for child,label in children[j]:
-                
+                if child == trigger:
+                    result["Protein's child is trigger:" + label] += 1.0
+                else:
                     result["Protein's child is not a trigger:" + label] += 1.0
 
     result["minimum distance between protein and trigger = " + str(min_distance)] += 1.0
